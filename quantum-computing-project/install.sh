@@ -3,7 +3,7 @@
 echo "🚀 Installing Quantum Computing Project..."
 
 # Check Python version
-python_version=$(python3 --version 2>&1 | grep -Po '(?<=Python )\d+\.\d+')
+python_version=python3 --version 2>&1 | grep -Po '(?<=Python )\d+\.\d+')
 required_version="3.9"
 
 if [ "$(printf '%s\n' "$required_version" "$python_version" | sort -V | head -n1)" != "$required_version" ]; then 
@@ -21,7 +21,7 @@ pip install --upgrade pip
 
 # Install package
 echo "📚 Installing dependencies..."
-pip install -e .
+pip instae .
 
 # Install development dependencies
 read -p "Install development dependencies? (y/n) " -n 1 -r
@@ -44,8 +44,7 @@ echo ""
 echo "To run tests:"
 echo "  make test"
 echo ""
-echo "To start the API:"
-echo "  make run-api"
+echo "To start the API:ho "  make run-api"
 echo ""
 echo "To start Jupyter:"
 echo "  make notebook"
