@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-computing-project"
+version = "0.1.0"
+description = "A comprehensive quantum computing project"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"

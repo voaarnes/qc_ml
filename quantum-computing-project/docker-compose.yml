@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  quantum-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - IBM_QUANTUM_TOKEN=${IBM_QUANTUM_TOKEN}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    environment:
+      - IBM_QUANTUM_TOKEN=${IBM_QUANTUM_TOKEN}
+    volumes:
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+      - ./src:/app/src
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
